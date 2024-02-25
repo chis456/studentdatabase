@@ -15,16 +15,18 @@ public class User
     private double height;
     private String hairColour;
     private double gpa;
+    private String international;
 
     public User() {}
 
-    public User(String name, double weight, double height, String hairColour, double gpa)
+    public User(String name, double weight, double height, String hairColour, double gpa, String international)
     {
         this.name = name;
         this.weight = weight;
         this.height = height;
         this.hairColour = hairColour;
         this.gpa = gpa;
+        this.international = international;
     }
 
     public int getUid() {
@@ -73,5 +75,13 @@ public class User
 
     public double getGpa() {
         return gpa;
+    }
+
+    public String getInternational() {
+        return international;
+    }
+
+    public void setInternational(String international) {
+        this.international = international;
     }
 }

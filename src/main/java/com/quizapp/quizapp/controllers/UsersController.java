@@ -30,10 +30,6 @@ public class UsersController {
         //TDODO GET ALL UESR FRFOM DATABASE!!!
 
         List<User> users = userRepo.findAll();
-        for(int i = 0; i < users.size(); i++)
-        {
-            System.out.println(users.get(i).getName());
-        }
 
         model.addAttribute("us", users);
         return "users/showAll";
@@ -46,13 +42,24 @@ public class UsersController {
         String newName = newUser.get("name");
         int newWeight = Integer.parseInt(newUser.get("weight"));
         int newHeight = Integer.parseInt(newUser.get("height"));
-        String newHColour = newUser.get("hColour");
         double newGPA = Double.parseDouble(newUser.get("gpa"));
+        String newHColour = newUser.get("hColour");
+       
+        String newInternational = newUser.get("international");
 
-        userRepo.save(new User(newName, newWeight, newHeight, newHColour, newGPA));
+        userRepo.save(new User(newName, newWeight, newHeight, newHColour, newGPA, newInternational));
 
         response.setStatus(201);
         return "users/addedUser";
     }
     
+    @PostMapping("users/remove")
+    public String removeUser(@RequestParam("uid") int uid)
+    {
+        System.out.println("test");
+        System.out.println("removing " + uid);
+
+        userRepo.deleteById(uid);
+        return "users/addedUser";
+    }
 }

@@ -12,5 +12,6 @@ public interface UserRepository extends JpaRepository<User, Integer>
     List<User> findByHairColour(String hairColour);
     List<User> findByGpa(double gpa);
     List<User> findByUid(int uid);
+    List<User> findByInternational(String international);
     //List<Student> findBy
 }
